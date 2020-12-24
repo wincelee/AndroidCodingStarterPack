@@ -105,7 +105,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             // Vibrate for 200 milliseconds
             // Sleep for 200 milliseconds
             //long[] VIBRATE_PATTERN = {0, 200, 200};
-            long[] VIBRATE_PATTERN = {0, 300, 300};
+            long[] VIBRATE_PATTERN = {0, 200, 300};
 
             if (vibrator.hasVibrator()){
 
