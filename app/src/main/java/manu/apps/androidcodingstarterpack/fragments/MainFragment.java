@@ -2,20 +2,34 @@ package manu.apps.androidcodingstarterpack.fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.button.MaterialButton;
+
 import manu.apps.androidcodingstarterpack.R;
 import manu.apps.androidcodingstarterpack.viewmodels.MainViewModel;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements View.OnClickListener {
+
+    MaterialButton btnVibration, btnOneShotVibration, btnWaveFormVibration;
+
+    BottomSheetBehavior<View> bottomSheetBehavior;
 
     private MainViewModel mainViewModel;
 
@@ -30,7 +44,87 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        btnVibration = view.findViewById(R.id.btn_vibration);
+        btnOneShotVibration = view.findViewById(R.id.btn_one_shot_vibration);
+        btnWaveFormVibration = view.findViewById(R.id.btn_wave_form_vibration);
+
+        View bottomSheetView = view.findViewById(R.id.bottom_sheet);
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+
+        btnVibration.setOnClickListener(this);
+        btnOneShotVibration.setOnClickListener(this);
+        btnWaveFormVibration.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        int viewId = v.getId();
+
+        if (viewId == R.id.btn_vibration){
+
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+        }
+
+        if (viewId == R.id.btn_one_shot_vibration){
+
+            if (Build.VERSION.SDK_INT >= 26) {
+
+                // Vibration Amplitude is the intensity of the vibration ranges from 1 to 255
+                // Changing the vibration in milliseconds is how long the vibration will take
+                ((Vibrator) requireActivity().getSystemService(Context.VIBRATOR_SERVICE))
+                        .vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+
+            } else {
+
+                // Changing the vibration in milliseconds is how long the vibration will take
+                ((Vibrator) requireActivity().getSystemService(Context.VIBRATOR_SERVICE))
+                        .vibrate(500);
+
+            }
+        }
+
+        if (viewId == R.id.btn_wave_form_vibration){
+
+            // Get instance of Vibrator from current Context
+            Vibrator vibrator = (Vibrator) requireActivity().getSystemService(Context.VIBRATOR_SERVICE);
+
+            // Start without a delay
+            // Vibrate for 200 milliseconds
+            // Sleep for 200 milliseconds
+            //long[] VIBRATE_PATTERN = {0, 200, 200};
+            long[] VIBRATE_PATTERN = {0, 300, 300};
+
+            if (vibrator.hasVibrator()){
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    // API 26 and above
+                    // Repeat pattern is how many times the vibration will occur -1 means it will occur only once
+                    vibrator.vibrate(VibrationEffect.createWaveform(VIBRATE_PATTERN, 0));
+                } else {
+                    // Below API 26
+                    // Repeat pattern is how many times the vibration will occur -1 means it will occur only once
+                    vibrator.vibrate(VIBRATE_PATTERN, 0);
+                }
+            }
+
+            // Stop the vibration after some time
+            final Handler handler = new Handler(Looper.getMainLooper());
+            handler.postDelayed(vibrator::cancel, 1000);
+
+
+        }
+    }
 }
