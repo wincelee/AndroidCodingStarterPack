@@ -11,4 +11,26 @@
         android:label="Main Fragment"
         tools:layout="@layout/main_fragment" />
 
+    <fragment
+        android:id="@+id/nav_sender_fragment"
+        android:name="manu.apps.androidcodingstarterpack.fragments.smsSender"
+        android:label="Sender Fragment"
+        tools:layout="@layout/sms_sender_fragment" >
+
+        <action
+            android:id="@+id/action_sender_to_retriever"
+            app:destination="@id/nav_retriever_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_retriever_fragment"
+        android:name="manu.apps.androidcodingstarterpack.fragments.smsRetriever"
+        android:label="Retriever Fragment"
+        tools:layout="@layout/sms_retriever_fragment" />
+
 </navigation>

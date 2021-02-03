@@ -27,7 +27,7 @@
             android:drawableStart="@drawable/ic_phone"
             android:drawableLeft="@drawable/ic_phone"
             android:drawablePadding="10dp"
-            android:hint="@string/enter_your_phone_number"
+            android:hint="@string/enter_phone_number"
             android:inputType="number"/>
 
     </com.google.android.material.textfield.TextInputLayout>

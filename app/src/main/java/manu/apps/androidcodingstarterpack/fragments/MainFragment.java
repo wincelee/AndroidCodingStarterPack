@@ -33,7 +33,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     private MainViewModel mainViewModel;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -56,6 +55,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnVibration = view.findViewById(R.id.btn_vibration);
         btnOneShotVibration = view.findViewById(R.id.btn_one_shot_vibration);
         btnWaveFormVibration = view.findViewById(R.id.btn_wave_form_vibration);
+
 
         View bottomSheetView = view.findViewById(R.id.bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView);
