@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.common.api.CommonStatusCodes;
@@ -24,6 +25,9 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import manu.apps.androidcodingstarterpack.R;
 
@@ -34,6 +38,7 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
     TextInputLayout tilOtp;
     TextInputEditText etOtp;
 
+    TextView tvSmsMessage;
 
     private static final int SMS_CONSENT_REQUEST = 2;  // Set to an unused request code
 
@@ -88,11 +93,13 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
 
         tilOtp = view.findViewById(R.id.til_otp);
         etOtp = view.findViewById(R.id.et_otp);
+        tvSmsMessage = view.findViewById(R.id.tv_sms_message);
 
         // Start listening for SMS User Consent broadcasts from senderPhoneNumber or sender
         // The Task<Void> will be successful if SmsRetriever was able to start
         // SMS User Consent, and will error if there was an error starting.
-        Task<Void> task = SmsRetriever.getClient(requireActivity()).startSmsUserConsent(null/*senderPhoneNumber or null */);
+        // startSmsUserConsent - Enter phone number here if you are using number from contact list to send opt verification
+        Task<Void> task = SmsRetriever.getClient(requireActivity()).startSmsUserConsent("DohYangu"/*senderPhoneNumber or null */);
 
         task.addOnCompleteListener(listener ->{
 
@@ -121,19 +128,26 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SMS_CONSENT_REQUEST) {
             if (resultCode == RESULT_OK) {
+                // Get Message Sender
+                String messageSender = data.getStringExtra(SmsRetriever.SMS_RETRIEVED_ACTION);
                 // Get SMS message content
                 String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
-                //String oneTimeCode = parseOneTimeCode(message); // define this function
 
                 new AlertDialog.Builder(requireActivity())
                         .setMessage(message)
                         .setCancelable(false)
                         .show();
 
+//                tvSmsMessage.setText(String.format("%s%s%s%s",getString(R.string.message), message,
+//                        getString(R.string.matched_string), parseOneTimeCode(message)));
+
                 // send one time code to the server
+
             } else {
+
                 // Consent canceled, handle the error ...
                 Log.wtf("ConsentCancelled", "onActivityResultConsentCancelled: " + true);
+
             }
         }else {
 
@@ -142,6 +156,27 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
                     .setMessage("Sms Consent Denied")
                     .show();
         }
+    }
+
+
+    private String parseOneTimeCode(String messageBody) {
+
+        String regex = "\\d+";
+        Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(messageBody);
+
+        String matchedString = "";
+
+        if (matcher.find()) {
+
+            matchedString = matcher.group(0);
+
+        }else {
+
+            matchedString = "";
+        }
+
+        return matchedString;
     }
 
     @Override

@@ -7,4 +7,6 @@
     <string name="proceed">Proceed</string>
     <string name="one_time_sms">One Time Sms</string>
     <string name="enter_otp_received">Enter OTP Received</string>
+    <string name="message">\nMessage: </string>
+    <string name="matched_string">\"\nMatchedString: \"</string>
 </resources>

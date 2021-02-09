@@ -28,4 +28,12 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/tv_sms_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/til_otp"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_margin="5dp"/>
+
 </RelativeLayout>
