@@ -23,16 +23,19 @@ public class MainActivity extends AppCompatActivity {
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-        appBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_main_fragment)
+        appBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_main_fragment, R.id.nav_sms_sender_one_time,
+                R.id.nav_sms_retriever_one_time)
                 .build();
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return NavigationUI.onNavDestinationSelected(item, navController)
-                || super.onOptionsItemSelected(item);
+    public boolean onSupportNavigateUp() {
+
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
+
     }
 
 }

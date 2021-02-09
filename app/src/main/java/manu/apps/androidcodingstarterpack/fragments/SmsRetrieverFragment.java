@@ -20,7 +20,7 @@ import com.google.android.gms.tasks.Task;
 
 import manu.apps.androidcodingstarterpack.R;
 
-public class SmsRetriever extends Fragment {
+public class SmsRetrieverFragment extends Fragment {
 
 
     NavController navController;

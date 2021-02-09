@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/nav_sms_sender_one_time"
         android:name="manu.apps.androidcodingstarterpack.fragments.SmsSenderOneTimeConsent"
-        android:label="Main Fragment"
+        android:label="Sms Sender One Time"
         tools:layout="@layout/sms_sender_one_time_consent_fragment">
 
         <action
@@ -53,9 +53,9 @@
 
     <fragment
         android:id="@+id/nav_sms_retriever_one_time"
-        android:name="manu.apps.androidcodingstarterpack.fragments.MainFragment"
+        android:name="manu.apps.androidcodingstarterpack.fragments.SmsRetrieverOneTimeConsent"
         android:label="Sms Retriever One Time"
-        tools:layout="@layout/sms_sender_one_time_consent_fragment"/>
+        tools:layout="@layout/sms_retriever_one_time_consent_fragment"/>
 
     <fragment
         android:id="@+id/nav_sender_fragment"
@@ -75,7 +75,7 @@
 
     <fragment
         android:id="@+id/nav_retriever_fragment"
-        android:name="manu.apps.androidcodingstarterpack.fragments.SmsRetriever"
+        android:name="manu.apps.androidcodingstarterpack.fragments.SmsRetrieverFragment"
         android:label="Retriever Fragment"
         tools:layout="@layout/sms_retriever_fragment" />
 
