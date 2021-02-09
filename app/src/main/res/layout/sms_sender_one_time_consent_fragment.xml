@@ -3,43 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.SmsSender">
+    tools:context=".fragments.SmsSenderOneTimeConsent">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_otp"
+        android:id="@+id/til_phone_number"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:paddingStart="10dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="5dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="10">
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
         <!--android:maxLength="13"-->
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_otp_phone_number"
+            android:id="@+id/et_phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_phone"
-            android:drawableLeft="@drawable/ic_phone"
-            android:drawablePadding="10dp"
             android:hint="@string/enter_phone_number"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_proceed"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/proceed"
-        android:theme="@style/MaterialTheme"
+        android:layout_below="@+id/til_phone_number"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/til_otp"/>
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/proceed"
+        android:theme="@style/MaterialTheme" />
+
 
 </RelativeLayout>

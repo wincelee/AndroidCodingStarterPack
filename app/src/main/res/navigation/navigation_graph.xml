@@ -9,11 +9,57 @@
         android:id="@+id/nav_main_fragment"
         android:name="manu.apps.androidcodingstarterpack.fragments.MainFragment"
         android:label="Main Fragment"
-        tools:layout="@layout/main_fragment" />
+        tools:layout="@layout/main_fragment">
+
+        <action
+            android:id="@+id/action_main_to_sender"
+            app:destination="@id/nav_sms_sender"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+        <action
+            android:id="@+id/action_main_to_sender_one_time"
+            app:destination="@id/nav_sms_sender_one_time"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_sms_sender_one_time"
+        android:name="manu.apps.androidcodingstarterpack.fragments.SmsSenderOneTimeConsent"
+        android:label="Main Fragment"
+        tools:layout="@layout/sms_sender_one_time_consent_fragment">
+
+        <action
+            android:id="@+id/action_sms_sender_to_retriever_one_time"
+            app:destination="@id/nav_sms_retriever_one_time"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_sms_sender"
+        android:name="manu.apps.androidcodingstarterpack.fragments.SmsSender"
+        android:label="SMS Sender"
+        tools:layout="@layout/sms_sender_fragment"/>
+
+    <fragment
+        android:id="@+id/nav_sms_retriever_one_time"
+        android:name="manu.apps.androidcodingstarterpack.fragments.MainFragment"
+        android:label="Sms Retriever One Time"
+        tools:layout="@layout/sms_sender_one_time_consent_fragment"/>
 
     <fragment
         android:id="@+id/nav_sender_fragment"
-        android:name="manu.apps.androidcodingstarterpack.fragments.smsSender"
+        android:name="manu.apps.androidcodingstarterpack.fragments.SmsSender"
         android:label="Sender Fragment"
         tools:layout="@layout/sms_sender_fragment" >
 
@@ -29,7 +75,7 @@
 
     <fragment
         android:id="@+id/nav_retriever_fragment"
-        android:name="manu.apps.androidcodingstarterpack.fragments.smsRetriever"
+        android:name="manu.apps.androidcodingstarterpack.fragments.SmsRetriever"
         android:label="Retriever Fragment"
         tools:layout="@layout/sms_retriever_fragment" />
 

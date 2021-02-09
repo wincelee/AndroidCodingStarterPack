@@ -1,7 +1,5 @@
 package manu.apps.androidcodingstarterpack.fragments;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,12 +7,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,15 +22,15 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
 
 import manu.apps.androidcodingstarterpack.R;
-import manu.apps.androidcodingstarterpack.viewmodels.MainViewModel;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
-    MaterialButton btnVibration, btnOneShotVibration, btnWaveFormVibration;
+    MaterialButton btnVibration, btnOneShotVibration, btnWaveFormVibration,
+            btnSmsSenderRetriever;
 
     BottomSheetBehavior<View> bottomSheetBehavior;
 
-    private MainViewModel mainViewModel;
+    NavController navController;
 
     @Nullable
     @Override
@@ -43,18 +42,18 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(view);
+
         btnVibration = view.findViewById(R.id.btn_vibration);
         btnOneShotVibration = view.findViewById(R.id.btn_one_shot_vibration);
         btnWaveFormVibration = view.findViewById(R.id.btn_wave_form_vibration);
+        btnSmsSenderRetriever = view.findViewById(R.id.btn_sms_sender_retriever);
 
 
         View bottomSheetView = view.findViewById(R.id.bottom_sheet);
@@ -64,6 +63,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnVibration.setOnClickListener(this);
         btnOneShotVibration.setOnClickListener(this);
         btnWaveFormVibration.setOnClickListener(this);
+        btnSmsSenderRetriever.setOnClickListener(this);
 
     }
 
@@ -124,7 +124,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             final Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(vibrator::cancel, 1000);
 
+        }
 
+        if (viewId == R.id.btn_sms_sender_retriever){
+
+            navController.navigate(R.id.action_main_to_sender_one_time);
+            
         }
     }
 }

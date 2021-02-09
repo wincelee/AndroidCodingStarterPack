@@ -31,7 +31,7 @@ import manu.apps.androidcodingstarterpack.viewmodels.SmsSenderViewModel;
 
 import static android.app.Activity.RESULT_OK;
 
-public class smsSender extends Fragment implements GoogleApiClient.OnConnectionFailedListener,
+public class SmsSender extends Fragment implements GoogleApiClient.OnConnectionFailedListener,
         GoogleApiClient.ConnectionCallbacks, View.OnClickListener {
 
     private SmsSenderViewModel smsSenderViewModel;
