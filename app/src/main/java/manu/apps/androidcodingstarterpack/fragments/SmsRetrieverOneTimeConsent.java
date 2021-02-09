@@ -99,7 +99,7 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
         // The Task<Void> will be successful if SmsRetriever was able to start
         // SMS User Consent, and will error if there was an error starting.
         // startSmsUserConsent - Enter phone number here if you are using number from contact list to send opt verification
-        Task<Void> task = SmsRetriever.getClient(requireActivity()).startSmsUserConsent("DohYangu"/*senderPhoneNumber or null */);
+        Task<Void> task = SmsRetriever.getClient(requireActivity()).startSmsUserConsent(null/*senderPhoneNumber or null */);
 
         task.addOnCompleteListener(listener ->{
 
@@ -128,8 +128,7 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SMS_CONSENT_REQUEST) {
             if (resultCode == RESULT_OK) {
-                // Get Message Sender
-                String messageSender = data.getStringExtra(SmsRetriever.SMS_RETRIEVED_ACTION);
+
                 // Get SMS message content
                 String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
 
@@ -165,7 +164,7 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
         Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(messageBody);
 
-        String matchedString = "";
+        String matchedString;
 
         if (matcher.find()) {
 
