@@ -27,14 +27,11 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import manu.apps.androidcodingstarterpack.R;
-import manu.apps.androidcodingstarterpack.viewmodels.SmsSenderViewModel;
 
 import static android.app.Activity.RESULT_OK;
 
 public class SmsSender extends Fragment implements GoogleApiClient.OnConnectionFailedListener,
         GoogleApiClient.ConnectionCallbacks, View.OnClickListener {
-
-    private SmsSenderViewModel smsSenderViewModel;
 
     TextInputEditText etOtpPhoneNumber;
 
@@ -66,8 +63,6 @@ public class SmsSender extends Fragment implements GoogleApiClient.OnConnectionF
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        smsSenderViewModel = new ViewModelProvider(this).get(SmsSenderViewModel.class);
     }
 
     @Override
