@@ -36,7 +36,7 @@ public class SmsSenderOneTimeConsent extends Fragment implements View.OnClickLis
 
     private static final int CREDENTIAL_PICKER_REQUEST = 1;
 
-    private static final int RESOLVE_HINT = 9001;
+    private static final int RESOLVE_HINT = 1111;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,

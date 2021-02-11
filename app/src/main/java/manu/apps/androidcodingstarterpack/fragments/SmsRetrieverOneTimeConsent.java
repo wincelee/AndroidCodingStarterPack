@@ -40,7 +40,7 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
 
     TextView tvSmsMessage;
 
-    private static final int SMS_CONSENT_REQUEST = 2;  // Set to an unused request code
+    private static final int SMS_CONSENT_REQUEST = 1111;  // Set to an unused request code
 
     private final BroadcastReceiver smsVerificationReceiver = new BroadcastReceiver() {
         @Override
