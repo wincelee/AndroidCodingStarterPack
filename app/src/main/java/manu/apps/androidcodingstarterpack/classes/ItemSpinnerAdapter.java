@@ -77,6 +77,7 @@ public class ItemSpinnerAdapter extends ArrayAdapter<Item> {
                 List<Item> itemsSuggestion = new ArrayList<>();
                 if (constraint != null) {
                     for (Item item : itemListAll) {
+
                         if (item.getItemName().toLowerCase().startsWith(constraint.toString().toLowerCase())) {
                             itemsSuggestion.add(item);
                         }

@@ -32,13 +32,15 @@ import java.util.List;
 import java.util.Map;
 
 import manu.apps.androidcodingstarterpack.R;
+import manu.apps.androidcodingstarterpack.classes.CustomTextWatcher;
 import manu.apps.androidcodingstarterpack.classes.Item;
 import manu.apps.androidcodingstarterpack.classes.ItemSpinnerAdapter;
+import manu.apps.androidcodingstarterpack.classes.ItemSpinnerSearchableAdapter;
 
 public class TilSpinnerFragment extends Fragment implements View.OnClickListener {
 
-    TextInputLayout tilItems;
-    AutoCompleteTextView actvItems;
+    TextInputLayout tilItems, tilItemsWithThreshold;
+    AutoCompleteTextView actvItems, actvItemsWithThreshold;
 
     ItemSpinnerAdapter itemSpinnerAdapter;
     List<Item> itemList;
@@ -64,6 +66,8 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
 
         tilItems = view.findViewById(R.id.til_items);
         actvItems = view.findViewById(R.id.actv_items);
+        tilItemsWithThreshold = view.findViewById(R.id.til_items_with_threshold);
+        actvItemsWithThreshold = view.findViewById(R.id.actv_items_with_threshold);
         btnCheckSelection = view.findViewById(R.id.btn_check_selection);
 
         // Fetching Items
@@ -87,6 +91,9 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
 
         btnCheckSelection.setOnClickListener(this);
 
+        actvItems.addTextChangedListener(new CustomTextWatcher(tilItems));
+        actvItemsWithThreshold.addTextChangedListener(new CustomTextWatcher(tilItemsWithThreshold));
+
 
     }
 
@@ -98,10 +105,20 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
         if (viewId == R.id.btn_check_selection){
 
             String checkItemName = actvItems.getText().toString().trim();
+            String checkItemName2 = actvItemsWithThreshold.getText().toString().trim();
 
             if (TextUtils.isEmpty(checkItemName)){
 
                 tilItems.setError("You have not selected any item");
+
+            }else if (TextUtils.isEmpty(checkItemName2)){
+
+                tilItemsWithThreshold.setError("You have not selected any item");
+
+            }else {
+
+                tilItems.setErrorEnabled(false);
+                tilItemsWithThreshold.setErrorEnabled(false);
             }
 
         }
@@ -233,6 +250,11 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
 
         itemSpinnerAdapter = new ItemSpinnerAdapter(requireActivity(), R.layout.spinner_layout, itemList);
         actvItems.setAdapter(itemSpinnerAdapter);
+
+        ItemSpinnerSearchableAdapter itemSpinnerSearchableAdapter = new ItemSpinnerSearchableAdapter(requireActivity(), itemList);
+        actvItemsWithThreshold.setAdapter(itemSpinnerSearchableAdapter);
+        // Setting threshold to start displaying the drop down upon number of characters typed
+        actvItemsWithThreshold.setThreshold(1);
 
     }
 }

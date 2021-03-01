@@ -26,7 +26,8 @@ import manu.apps.androidcodingstarterpack.R;
 public class MainFragment extends Fragment implements View.OnClickListener {
 
     MaterialButton btnVibration, btnOneShotVibration, btnWaveFormVibration,
-            btnSmsSenderRetriever, btnTextInputLayoutAutoCompleteTextViewSpinner;
+            btnSmsSenderRetriever, btnTextInputLayoutAutoCompleteTextViewSpinner,
+            btnChipsFragment;
 
     BottomSheetBehavior<View> bottomSheetBehavior;
 
@@ -72,13 +73,13 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         int viewId = v.getId();
 
-        if (viewId == R.id.btn_vibration){
+        if (viewId == R.id.btn_vibration) {
 
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
 
         }
 
-        if (viewId == R.id.btn_one_shot_vibration){
+        if (viewId == R.id.btn_one_shot_vibration) {
 
             if (Build.VERSION.SDK_INT >= 26) {
 
@@ -96,7 +97,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             }
         }
 
-        if (viewId == R.id.btn_wave_form_vibration){
+        if (viewId == R.id.btn_wave_form_vibration) {
 
             // Get instance of Vibrator from current Context
             Vibrator vibrator = (Vibrator) requireActivity().getSystemService(Context.VIBRATOR_SERVICE);
@@ -107,7 +108,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             //long[] VIBRATE_PATTERN = {0, 200, 200};
             long[] VIBRATE_PATTERN = {0, 300, 300};
 
-            if (vibrator.hasVibrator()){
+            if (vibrator.hasVibrator()) {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     // API 26 and above
@@ -126,13 +127,13 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         }
 
-        if (viewId == R.id.btn_sms_sender_retriever){
+        if (viewId == R.id.btn_sms_sender_retriever) {
 
             navController.navigate(R.id.action_main_to_sender_one_time);
-            
+
         }
 
-        if (viewId == R.id.btn_text_input_layout_auto_complete_text_view_spinner){
+        if (viewId == R.id.btn_text_input_layout_auto_complete_text_view_spinner) {
 
             navController.navigate(R.id.nav_til_spinner_fragment);
         }

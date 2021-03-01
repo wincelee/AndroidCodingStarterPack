@@ -60,6 +60,23 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/rl_row_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_row_two">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_chips_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:text="@string/chips_group"
+                    android:theme="@style/MaterialTheme" />
+
+            </RelativeLayout>
+
         </RelativeLayout>
     </ScrollView>
 

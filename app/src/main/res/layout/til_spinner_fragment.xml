@@ -34,6 +34,31 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_items_with_threshold"
+        style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="5dp"
+        android:padding="3dp"
+        app:startIconDrawable="@drawable/ic_phone"
+        android:layout_below="@+id/til_items">
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_items_with_threshold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/choose_item_name"
+            android:dropDownSelector="@color/purple_200"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_check_selection"
         android:layout_width="wrap_content"
@@ -42,6 +67,6 @@
         android:layout_margin="10dp"
         android:text="@string/check_selection"
         android:theme="@style/MaterialTheme"
-        android:layout_below="@+id/til_items"/>
+        android:layout_below="@+id/til_items_with_threshold"/>
 
 </RelativeLayout>
