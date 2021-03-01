@@ -26,7 +26,7 @@ import manu.apps.androidcodingstarterpack.R;
 public class MainFragment extends Fragment implements View.OnClickListener {
 
     MaterialButton btnVibration, btnOneShotVibration, btnWaveFormVibration,
-            btnSmsSenderRetriever;
+            btnSmsSenderRetriever, btnTextInputLayoutAutoCompleteTextViewSpinner;
 
     BottomSheetBehavior<View> bottomSheetBehavior;
 
@@ -54,7 +54,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnOneShotVibration = view.findViewById(R.id.btn_one_shot_vibration);
         btnWaveFormVibration = view.findViewById(R.id.btn_wave_form_vibration);
         btnSmsSenderRetriever = view.findViewById(R.id.btn_sms_sender_retriever);
-
+        btnTextInputLayoutAutoCompleteTextViewSpinner = view.findViewById(R.id.btn_text_input_layout_auto_complete_text_view_spinner);
 
         View bottomSheetView = view.findViewById(R.id.bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView);
@@ -64,7 +64,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnOneShotVibration.setOnClickListener(this);
         btnWaveFormVibration.setOnClickListener(this);
         btnSmsSenderRetriever.setOnClickListener(this);
-
+        btnTextInputLayoutAutoCompleteTextViewSpinner.setOnClickListener(this);
     }
 
     @Override
@@ -131,5 +131,11 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             navController.navigate(R.id.action_main_to_sender_one_time);
             
         }
+
+        if (viewId == R.id.btn_text_input_layout_auto_complete_text_view_spinner){
+
+            navController.navigate(R.id.nav_til_spinner_fragment);
+        }
+
     }
 }

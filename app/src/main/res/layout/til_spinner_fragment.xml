@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.TilSpinnerFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_items"
+        style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="5dp"
+        android:padding="3dp"
+        app:startIconDrawable="@drawable/ic_phone">
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Choose Item Name"
+            android:clickable = "true"
+            android:focusable = "true"
+            android:focusableInTouchMode = "false"
+            android:inputType = "none"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>

@@ -9,4 +9,6 @@
     <string name="enter_otp_received">Enter OTP Received</string>
     <string name="message">\nMessage: </string>
     <string name="matched_string">\"\nMatchedString: \"</string>
+    <string name="bar_code_scanner">Bar Code Scanner</string>
+    <string name="text_input_layout_auto_complete_text_view_spinner">Text Input Layout Auto Complete Text View Spinner</string>
 </resources>

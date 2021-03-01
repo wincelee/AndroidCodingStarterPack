@@ -27,6 +27,15 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
+        <action
+            android:id="@+id/action_main_to_til_spinner"
+            app:destination="@id/nav_til_spinner_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+
     </fragment>
 
     <fragment
@@ -78,5 +87,11 @@
         android:name="manu.apps.androidcodingstarterpack.fragments.SmsRetrieverFragment"
         android:label="Retriever Fragment"
         tools:layout="@layout/sms_retriever_fragment" />
+
+    <fragment
+        android:id="@+id/nav_til_spinner_fragment"
+        android:name="manu.apps.androidcodingstarterpack.fragments.TilSpinnerFragment"
+        android:label="Til Spinner"
+        tools:layout="@layout/til_spinner_fragment" />
 
 </navigation>

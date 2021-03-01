@@ -7,31 +7,61 @@
     android:layout_height="match_parent"
     tools:context=".fragments.MainFragment">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_vibration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/vibration"
-            android:theme="@style/MaterialTheme"
-            android:layout_centerHorizontal="true"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_sms_sender_retriever"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/one_time_sms"
-            android:theme="@style/MaterialTheme"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/btn_vibration"/>
+            <RelativeLayout
+                android:id="@+id/rl_row_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_vibration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:text="@string/vibration"
+                    android:theme="@style/MaterialTheme" />
 
-    </RelativeLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_sms_sender_retriever"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@+id/btn_vibration"
+                    android:layout_toRightOf="@+id/btn_vibration"
+                    android:text="@string/one_time_sms"
+                    android:theme="@style/MaterialTheme" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_row_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_row_one">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_text_input_layout_auto_complete_text_view_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:text="@string/text_input_layout_auto_complete_text_view_spinner"
+                    android:theme="@style/MaterialTheme" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
 
 
     <include layout="@layout/layout_bottom_sheet" />

@@ -1,6 +1,5 @@
 package manu.apps.androidcodingstarterpack.fragments;
 
-
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -12,12 +11,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.common.api.CommonStatusCodes;
@@ -29,6 +30,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import manu.apps.androidcodingstarterpack.MainActivity;
 import manu.apps.androidcodingstarterpack.R;
 
 import static android.app.Activity.RESULT_OK;
@@ -101,13 +103,13 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
         // startSmsUserConsent - Enter phone number here if you are using number from contact list to send opt verification
         Task<Void> task = SmsRetriever.getClient(requireActivity()).startSmsUserConsent(null/*senderPhoneNumber or null */);
 
-        task.addOnCompleteListener(listener ->{
+        task.addOnCompleteListener(listener -> {
 
-            if (listener.isSuccessful()){
+            if (listener.isSuccessful()) {
 
                 Log.wtf("SmsRetrieverListenerSuccess", "SmsRetrieverListenerSuccess: " + true);
 
-            }else{
+            } else {
 
                 Exception exception = listener.getException();
 
@@ -117,6 +119,11 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
 
             }
         });
+
+        startIntentFilter();
+    }
+
+    private void startIntentFilter() {
 
         IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
         requireActivity().registerReceiver(smsVerificationReceiver, intentFilter);
@@ -129,13 +136,35 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
         if (requestCode == SMS_CONSENT_REQUEST) {
             if (resultCode == RESULT_OK) {
 
+                requireActivity().unregisterReceiver(smsVerificationReceiver);
+
                 // Get SMS message content
                 String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
 
-                new AlertDialog.Builder(requireActivity())
-                        .setMessage(message)
-                        .setCancelable(false)
-                        .show();
+//                new AlertDialog.Builder(requireActivity())
+//                        .setMessage(message)
+//                        .setCancelable(true)
+//                        .show();
+
+                try {
+
+                    new AlertDialog.Builder(requireActivity())
+                            .setMessage(parseOneTimeCode(message))
+                            .setCancelable(true)
+                            .show();
+
+                } catch (Exception e) {
+
+                    new AlertDialog.Builder(requireActivity())
+                            .setMessage("OTP not from Doh Yangu")
+                            .setCancelable(true)
+                            .show();
+
+                    e.printStackTrace();
+
+                    startIntentFilter();
+
+                }
 
 //                tvSmsMessage.setText(String.format("%s%s%s%s",getString(R.string.message), message,
 //                        getString(R.string.matched_string), parseOneTimeCode(message)));
@@ -148,7 +177,7 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
                 Log.wtf("ConsentCancelled", "onActivityResultConsentCancelled: " + true);
 
             }
-        }else {
+        } else {
 
             // Sms consent denied
             new AlertDialog.Builder(requireActivity())
@@ -170,7 +199,7 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
 
             matchedString = matcher.group(0);
 
-        }else {
+        } else {
 
             matchedString = "";
         }
@@ -179,9 +208,25 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
     }
 
     @Override
+    public void onResume() {
+
+        Toast.makeText(requireActivity(), "Fragment Resumed", Toast.LENGTH_LONG).show();
+
+        startIntentFilter();
+
+        super.onResume();
+    }
+
+    @Override
     public void onStop() {
 
-        requireActivity().unregisterReceiver(smsVerificationReceiver);
+        Toast.makeText(requireActivity(), "Fragment Stopped", Toast.LENGTH_LONG).show();
+
+        if (!requireActivity().isFinishing()) {
+
+            requireActivity().unregisterReceiver(smsVerificationReceiver);
+
+        }
 
         super.onStop();
     }
@@ -189,7 +234,15 @@ public class SmsRetrieverOneTimeConsent extends Fragment {
     @Override
     public void onDestroy() {
 
-        requireActivity().unregisterReceiver(smsVerificationReceiver);
+        Toast.makeText(requireActivity(), "Fragment Destroyed", Toast.LENGTH_LONG).show();
+
+        startIntentFilter();
+
+        if (!requireActivity().isFinishing()) {
+
+            requireActivity().unregisterReceiver(smsVerificationReceiver);
+
+        }
 
         super.onDestroy();
     }
