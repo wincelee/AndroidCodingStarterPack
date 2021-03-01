@@ -34,4 +34,14 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_check_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="@string/check_selection"
+        android:theme="@style/MaterialTheme"
+        android:layout_below="@+id/til_items"/>
+
 </RelativeLayout>

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
@@ -33,13 +35,15 @@ import manu.apps.androidcodingstarterpack.R;
 import manu.apps.androidcodingstarterpack.classes.Item;
 import manu.apps.androidcodingstarterpack.classes.ItemSpinnerAdapter;
 
-public class TilSpinnerFragment extends Fragment {
+public class TilSpinnerFragment extends Fragment implements View.OnClickListener {
 
     TextInputLayout tilItems;
     AutoCompleteTextView actvItems;
 
     ItemSpinnerAdapter itemSpinnerAdapter;
     List<Item> itemList;
+
+    MaterialButton btnCheckSelection;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -60,6 +64,7 @@ public class TilSpinnerFragment extends Fragment {
 
         tilItems = view.findViewById(R.id.til_items);
         actvItems = view.findViewById(R.id.actv_items);
+        btnCheckSelection = view.findViewById(R.id.btn_check_selection);
 
         // Fetching Items
         fetchItems();
@@ -80,7 +85,26 @@ public class TilSpinnerFragment extends Fragment {
             });
         }
 
+        btnCheckSelection.setOnClickListener(this);
 
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        int viewId = v.getId();
+
+        if (viewId == R.id.btn_check_selection){
+
+            String checkItemName = actvItems.getText().toString().trim();
+
+            if (TextUtils.isEmpty(checkItemName)){
+
+                tilItems.setError("You have not selected any item");
+            }
+
+        }
     }
 
     private void fetchItems() {
@@ -180,7 +204,7 @@ public class TilSpinnerFragment extends Fragment {
 
                     }
 
-                    setUpPumpRecyclerView(itemList);
+                    setUpItemSpinner(itemList);
 
 
                 }, error -> {
@@ -205,7 +229,7 @@ public class TilSpinnerFragment extends Fragment {
 
     }
 
-    private void setUpPumpRecyclerView(List<Item> itemList) {
+    private void setUpItemSpinner(List<Item> itemList) {
 
         itemSpinnerAdapter = new ItemSpinnerAdapter(requireActivity(), R.layout.spinner_layout, itemList);
         actvItems.setAdapter(itemSpinnerAdapter);

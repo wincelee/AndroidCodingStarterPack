@@ -14,4 +14,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_input_layout_auto_complete_text_view_spinner">Text Input Layout Auto Complete Text View Spinner</string>
     <string name="choose_item_name">Choose Item Name</string>
+    <string name="check_selection">Check Selection</string>
 </resources>
