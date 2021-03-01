@@ -24,11 +24,12 @@
             android:id="@+id/actv_items"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Choose Item Name"
+            android:hint="@string/choose_item_name"
             android:clickable = "true"
             android:focusable = "true"
             android:focusableInTouchMode = "false"
             android:inputType = "none"
+            android:dropDownSelector="@color/purple_200"
             />
 
     </com.google.android.material.textfield.TextInputLayout>

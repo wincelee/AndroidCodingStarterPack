@@ -30,7 +30,6 @@ import java.util.List;
 import java.util.Map;
 
 import manu.apps.androidcodingstarterpack.R;
-import manu.apps.androidcodingstarterpack.classes.Config;
 import manu.apps.androidcodingstarterpack.classes.Item;
 import manu.apps.androidcodingstarterpack.classes.ItemSpinnerAdapter;
 
@@ -62,7 +61,25 @@ public class TilSpinnerFragment extends Fragment {
         tilItems = view.findViewById(R.id.til_items);
         actvItems = view.findViewById(R.id.actv_items);
 
+        // Fetching Items
         fetchItems();
+
+        // Getting selected items from auto complete text view
+        // Only set this on click listener when items have been fetched
+        if (!itemList.isEmpty()){
+
+            actvItems.setOnItemClickListener((parent, arg1, pos, id) -> {
+
+                Item selectedItem = (Item) parent.getItemAtPosition(pos);
+
+                int itemId = selectedItem.getItemId();
+                String itemName = selectedItem.getItemName();
+
+                Toast.makeText(requireActivity(), "Item Id: " + itemId + "\nItem Name: " + itemName, Toast.LENGTH_LONG).show();
+
+            });
+        }
+
 
     }
 

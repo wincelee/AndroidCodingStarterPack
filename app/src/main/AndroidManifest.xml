@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="manu.apps.androidcodingstarterpack">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
 
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
