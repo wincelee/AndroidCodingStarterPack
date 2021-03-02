@@ -56,6 +56,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnWaveFormVibration = view.findViewById(R.id.btn_wave_form_vibration);
         btnSmsSenderRetriever = view.findViewById(R.id.btn_sms_sender_retriever);
         btnTextInputLayoutAutoCompleteTextViewSpinner = view.findViewById(R.id.btn_text_input_layout_auto_complete_text_view_spinner);
+        btnChipsFragment = view.findViewById(R.id.btn_chips_fragment);
 
         View bottomSheetView = view.findViewById(R.id.bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView);
@@ -66,6 +67,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnWaveFormVibration.setOnClickListener(this);
         btnSmsSenderRetriever.setOnClickListener(this);
         btnTextInputLayoutAutoCompleteTextViewSpinner.setOnClickListener(this);
+        btnChipsFragment.setOnClickListener(this);
     }
 
     @Override
@@ -136,6 +138,13 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         if (viewId == R.id.btn_text_input_layout_auto_complete_text_view_spinner) {
 
             navController.navigate(R.id.nav_til_spinner_fragment);
+
+        }
+
+        if (viewId == R.id.btn_chips_fragment){
+
+            navController.navigate(R.id.nav_chips_group);
+
         }
 
     }

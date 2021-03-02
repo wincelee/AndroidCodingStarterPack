@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
@@ -255,6 +256,28 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
         actvItemsWithThreshold.setAdapter(itemSpinnerSearchableAdapter);
         // Setting threshold to start displaying the drop down upon number of characters typed
         actvItemsWithThreshold.setThreshold(1);
+
+        // Hardcoding list items for Auto Complete Text View
+//        List<String> items = new ArrayList<>();
+//        items.add("Toyota");
+//        items.add("Volvo");
+//        items.add("Suzuki");
+//        items.add("Mazda");
+//        items.add("BMW");
+//        items.add("Nissan");
+//        items.add("Ford ");
+//        items.add("Volkswagen");
+//        items.add("Audi");
+//        items.add("Hyundai");
+//        items.add("Jeep");
+//        items.add("Land Rover");
+//        items.add("Mitsubishi");
+//        items.add("Subaru");
+//
+//        ArrayAdapter<String> itemArrayAdapter = new ArrayAdapter<>(requireActivity(),
+//                android.R.layout.simple_list_item_1, items);
+//
+//        actvItemsWithThreshold.setAdapter(itemArrayAdapter);
 
     }
 }

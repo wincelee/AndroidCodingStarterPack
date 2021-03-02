@@ -94,4 +94,10 @@
         android:label="Til Spinner"
         tools:layout="@layout/til_spinner_fragment" />
 
+    <fragment
+        android:id="@+id/nav_chips_group"
+        android:name="manu.apps.androidcodingstarterpack.fragments.ChipsGroupFragment"
+        android:label="Chips Group"
+        tools:layout="@layout/chips_group_fragment" />
+
 </navigation>

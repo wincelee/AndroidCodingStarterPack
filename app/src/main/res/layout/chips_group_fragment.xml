@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ChipsGroupFragment">
+
+    <RelativeLayout
+        android:id="@+id/rl_all_chip_styles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/default_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_chip"
+            />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/entry_chip"
+            style="@style/Widget.MaterialComponents.Chip.Entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/entry_chip"
+            android:layout_below="@+id/default_chip"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/choice_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choice_chip"
+            android:layout_below="@+id/entry_chip"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/action_chip"
+            style="@style/Widget.MaterialComponents.Chip.Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_chip"
+            android:layout_below="@+id/choice_chip"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/filter_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_chip"
+            android:layout_below="@+id/action_chip"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_all_chip_styles">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:singleSelection="true"
+            app:selectionRequired="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/c_male"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                app:chipBackgroundColor="@color/colorAccent"
+                android:textColor="@android:color/white"
+                android:textAlignment="center"
+                app:chipIconSize="20dp"
+                app:chipIconTint="@android:color/white"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/c_female"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/female"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                app:chipBackgroundColor="@color/colorAccent"
+                android:textColor="@android:color/white"
+                android:textAlignment="center"
+                app:chipIconSize="20dp"
+                app:chipIconTint="@android:color/white"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </RelativeLayout>
+
+</RelativeLayout>

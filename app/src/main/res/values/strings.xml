@@ -16,4 +16,11 @@
     <string name="choose_item_name">Choose Item Name</string>
     <string name="check_selection">Check Selection</string>
     <string name="chips_group">Chips Group</string>
+    <string name="default_chip">Default Chip</string>
+    <string name="entry_chip">Entry Chip</string>
+    <string name="choice_chip">Choice Chip</string>
+    <string name="action_chip">Action Chip</string>
+    <string name="filter_chip">Filter Chip</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>
