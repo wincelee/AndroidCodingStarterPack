@@ -23,4 +23,7 @@
     <string name="filter_chip">Filter Chip</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="chip_groups">Chip Groups</string>
+    <string name="color_change_chip">Color Change Chip</string>
+    <string name="check_selected_chip">Check Selected Chip</string>
 </resources>

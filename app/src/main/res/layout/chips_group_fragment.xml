@@ -54,9 +54,46 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_chip_color_change_on_click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_all_chip_styles">
+        android:layout_below="@+id/rl_all_chip_styles"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tv_chip_color_change_on_click"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/chip_groups"
+            android:textColor="@android:color/black"
+            android:textAlignment="center"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/color_change_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/color_change_chip"
+            android:layout_below="@+id/tv_chip_color_change_on_click"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_chip_color_change_on_click"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tv_chip_groups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/chip_groups"
+            android:textColor="@android:color/black"
+            android:textAlignment="center"/>
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_gender"
@@ -64,33 +101,51 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             app:singleSelection="true"
-            app:selectionRequired="true">
+            app:selectionRequired="true"
+            android:layout_below="@+id/tv_chip_groups">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/c_male"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/male"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                app:chipBackgroundColor="@color/colorAccent"
                 android:textColor="@android:color/white"
                 android:textAlignment="center"
                 app:chipIconSize="20dp"
-                app:chipIconTint="@android:color/white"/>
+                app:chipIconTint="@android:color/white"
+                app:chipEndPadding="5dp"
+                app:chipStartPadding="10dp"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                app:chipIconVisible="true"
+                app:chipBackgroundColor="@color/colorAccent"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/c_female"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/female"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                app:chipBackgroundColor="@color/colorAccent"
                 android:textColor="@android:color/white"
                 android:textAlignment="center"
                 app:chipIconSize="20dp"
-                app:chipIconTint="@android:color/white"/>
+                app:chipIconTint="@android:color/white"
+                app:chipEndPadding="5dp"
+                app:chipStartPadding="10dp"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                app:chipIconVisible="true"
+                app:chipBackgroundColor="@color/colorAccent"
+                />
 
         </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_check_selected_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="@string/check_selected_chip"
+            android:theme="@style/MaterialTheme"
+            android:layout_below="@+id/cg_gender"/>
 
     </RelativeLayout>
 
