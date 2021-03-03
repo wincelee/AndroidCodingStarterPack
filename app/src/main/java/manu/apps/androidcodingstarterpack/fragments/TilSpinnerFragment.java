@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
@@ -75,20 +74,16 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
         fetchItems();
 
         // Getting selected items from auto complete text view
-        // Only set this on click listener when items have been fetched
-        if (!itemList.isEmpty()){
+        actvItems.setOnItemClickListener((parent, arg1, pos, id) -> {
 
-            actvItems.setOnItemClickListener((parent, arg1, pos, id) -> {
+            Item selectedItem = (Item) parent.getItemAtPosition(pos);
 
-                Item selectedItem = (Item) parent.getItemAtPosition(pos);
+            int itemId = selectedItem.getItemId();
+            String itemName = selectedItem.getItemName();
 
-                int itemId = selectedItem.getItemId();
-                String itemName = selectedItem.getItemName();
+            Toast.makeText(requireActivity(), "Item Id: " + itemId + "\nItem Name: " + itemName, Toast.LENGTH_LONG).show();
 
-                Toast.makeText(requireActivity(), "Item Id: " + itemId + "\nItem Name: " + itemName, Toast.LENGTH_LONG).show();
-
-            });
-        }
+        });
 
         btnCheckSelection.setOnClickListener(this);
 
@@ -135,7 +130,7 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://jsonkeeper.com/b/GB75",
                 response -> {
 
-                    int itemId = 0;
+                    int itemId;
                     String itemName;
 
                     if (response.length() == 0) {
