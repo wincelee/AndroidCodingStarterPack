@@ -1,5 +1,7 @@
 package manu.apps.androidcodingstarterpack.classes;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Item {
 
     int itemId;
@@ -28,5 +30,11 @@ public class Item {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    @NotNull
+    @Override
+    public String toString() {
+        return itemName;
     }
 }

@@ -18,7 +18,8 @@
         android:layout_marginRight="2dp"
         android:layout_marginBottom="5dp"
         android:padding="3dp"
-        app:startIconDrawable="@drawable/ic_phone">
+        app:startIconDrawable="@drawable/ic_phone"
+        app:endIconTint="@color/colorPrimary">
 
         <AutoCompleteTextView
             android:id="@+id/actv_items"
@@ -47,7 +48,8 @@
         android:layout_marginBottom="5dp"
         android:padding="3dp"
         app:startIconDrawable="@drawable/ic_phone"
-        android:layout_below="@+id/til_items">
+        android:layout_below="@+id/til_items"
+        app:endIconTint="@color/colorPrimary">
 
         <AutoCompleteTextView
             android:id="@+id/actv_items_with_threshold"

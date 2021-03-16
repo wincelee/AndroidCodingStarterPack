@@ -12,6 +12,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 import manu.apps.androidcodingstarterpack.R;
+import manu.apps.androidcodingstarterpack.classes.Config;
 import manu.apps.androidcodingstarterpack.classes.CustomTextWatcher;
 import manu.apps.androidcodingstarterpack.classes.Item;
 import manu.apps.androidcodingstarterpack.classes.ItemSpinnerAdapter;
@@ -85,6 +88,17 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
 
         });
 
+        actvItemsWithThreshold.setOnItemClickListener((parent, arg1, pos, id) -> {
+
+            Item selectedItem = (Item) parent.getItemAtPosition(pos);
+
+            int itemId = selectedItem.getItemId();
+            String itemName = selectedItem.getItemName();
+
+            Toast.makeText(requireActivity(), "Item Id: " + itemId + "\nItem Name: " + itemName, Toast.LENGTH_LONG).show();
+
+        });
+
         btnCheckSelection.setOnClickListener(this);
 
         actvItems.addTextChangedListener(new CustomTextWatcher(tilItems));
@@ -127,7 +141,7 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://jsonkeeper.com/b/GB75",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.ITEMS,
                 response -> {
 
                     int itemId;
@@ -247,10 +261,10 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
         itemSpinnerAdapter = new ItemSpinnerAdapter(requireActivity(), R.layout.spinner_layout, itemList);
         actvItems.setAdapter(itemSpinnerAdapter);
 
-        ItemSpinnerSearchableAdapter itemSpinnerSearchableAdapter = new ItemSpinnerSearchableAdapter(requireActivity(), itemList);
-        actvItemsWithThreshold.setAdapter(itemSpinnerSearchableAdapter);
-        // Setting threshold to start displaying the drop down upon number of characters typed
-        actvItemsWithThreshold.setThreshold(1);
+//        ItemSpinnerSearchableAdapter itemSpinnerSearchableAdapter = new ItemSpinnerSearchableAdapter(requireActivity(), itemList);
+//        actvItemsWithThreshold.setAdapter(itemSpinnerSearchableAdapter);
+//        // Setting threshold to start displaying the drop down upon number of characters typed
+//        actvItemsWithThreshold.setThreshold(1);
 
         // Hardcoding list items for Auto Complete Text View
 //        List<String> items = new ArrayList<>();
@@ -273,6 +287,9 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
 //                android.R.layout.simple_list_item_1, items);
 //
 //        actvItemsWithThreshold.setAdapter(itemArrayAdapter);
+
+        ArrayAdapter<Item> arrayAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, itemList);
+        actvItemsWithThreshold.setAdapter(arrayAdapter);
 
     }
 }

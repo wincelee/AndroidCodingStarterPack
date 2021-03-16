@@ -27,7 +27,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     MaterialButton btnVibration, btnOneShotVibration, btnWaveFormVibration,
             btnSmsSenderRetriever, btnTextInputLayoutAutoCompleteTextViewSpinner,
-            btnChipsFragment;
+            btnChipsFragment, btnGSonFragment;
 
     BottomSheetBehavior<View> bottomSheetBehavior;
 
@@ -57,6 +57,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnSmsSenderRetriever = view.findViewById(R.id.btn_sms_sender_retriever);
         btnTextInputLayoutAutoCompleteTextViewSpinner = view.findViewById(R.id.btn_text_input_layout_auto_complete_text_view_spinner);
         btnChipsFragment = view.findViewById(R.id.btn_chips_fragment);
+        btnGSonFragment = view.findViewById(R.id.btn_gSon_fragment);
 
         View bottomSheetView = view.findViewById(R.id.bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView);
@@ -68,10 +69,13 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnSmsSenderRetriever.setOnClickListener(this);
         btnTextInputLayoutAutoCompleteTextViewSpinner.setOnClickListener(this);
         btnChipsFragment.setOnClickListener(this);
+        btnGSonFragment.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+
+        Bundle bundle = new Bundle();
 
         int viewId = v.getId();
 
@@ -143,8 +147,20 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         if (viewId == R.id.btn_chips_fragment){
 
-            navController.navigate(R.id.nav_chips_group);
+            bundle.putSerializable("SERIALIZABLE", "serializable");
+            bundle.putString("fragmentName", "chipsFragment");
 
+            navController.navigate(R.id.nav_chips_group, bundle);
+
+        }
+
+        if (viewId == R.id.btn_gSon_fragment){
+
+
+            bundle.putSerializable("SERIALIZABLE", "serializable");
+            bundle.putString("fragmentName", "gSonFragment");
+
+            navController.navigate(R.id.nav_chips_group, bundle);
         }
 
     }
