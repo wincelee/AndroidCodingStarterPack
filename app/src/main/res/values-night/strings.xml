@@ -24,4 +24,5 @@
     <string name="check_selected_chip">Check Selected Chip</string>
     <string name="gson_json_parsing">GSon Json Parsing</string>
     <string name="state_progress_bar">State Progress Bar</string>
+    <string name="image_picker">Image Picker</string>
 </resources>
