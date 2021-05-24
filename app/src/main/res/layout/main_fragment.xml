@@ -82,9 +82,27 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="10dp"
-                    android:text="GSon Json Parsing"
+                    android:text="@string/gson_json_parsing"
                     android:theme="@style/MaterialTheme"
                     android:layout_toEndOf="@+id/btn_chips_fragment"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_row_four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_row_three"
+                android:gravity="center">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_state_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:text="@string/step_progress_bar"
+                    android:theme="@style/MaterialTheme"/>
 
             </RelativeLayout>
 

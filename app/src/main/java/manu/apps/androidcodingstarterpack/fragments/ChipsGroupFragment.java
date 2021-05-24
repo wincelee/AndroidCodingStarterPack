@@ -1,30 +1,21 @@
 package manu.apps.androidcodingstarterpack.fragments;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -38,12 +29,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.Inflater;
 
-import manu.apps.androidcodingstarterpack.MainActivity;
 import manu.apps.androidcodingstarterpack.R;
 import manu.apps.androidcodingstarterpack.adapters.ItemAdapter;
 import manu.apps.androidcodingstarterpack.adapters.VehicleAdapter;
@@ -99,6 +87,10 @@ public class ChipsGroupFragment extends Fragment implements View.OnClickListener
             if (fragment.equalsIgnoreCase("gSonFragment")){
 
                 fragmentView = inflater.inflate(R.layout.g_son_fragment, container, false);
+
+            }else if (fragment.equalsIgnoreCase("stateProgressBarFragment")){
+
+                fragmentView = inflater.inflate(R.layout.step_progress_bar_fragment, container, false);
 
             }
 
@@ -186,6 +178,10 @@ public class ChipsGroupFragment extends Fragment implements View.OnClickListener
                     srlVehicles.setRefreshing(false);
 
                 });
+
+            }else if (fragment.equalsIgnoreCase("stateProgressBarFragment")){
+
+                Toast.makeText(requireActivity(), "State Progress Bar Fragment", Toast.LENGTH_LONG).show();
 
             }
 

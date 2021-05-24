@@ -289,6 +289,7 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
 //        actvItemsWithThreshold.setAdapter(itemArrayAdapter);
 
         ArrayAdapter<Item> arrayAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, itemList);
+        actvItemsWithThreshold.setThreshold(1);
         actvItemsWithThreshold.setAdapter(arrayAdapter);
 
     }
