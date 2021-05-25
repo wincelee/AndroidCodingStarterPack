@@ -11,4 +11,14 @@
     <color name="colorPrimary">#7e1416</color>
     <color name="colorPrimaryDark">#4d0000</color>
     <color name="colorAccent">#F9A61A</color>
+
+    <color name="colorBlack80">#CC000000</color>
+    <color name="colorBlack60">#CC000000</color>
+    <color name="colorBlack50">#80000000</color>
+    <color name="colorBlack40">#66000000</color>
+    <color name="colorBlack30">#4D000000</color>
+    <color name="colorBlack20">#0D000000</color>
+    <color name="colorBlack10">#0D000000</color>
+    <color name="colorBlack5">#0D000000</color>
+
 </resources>

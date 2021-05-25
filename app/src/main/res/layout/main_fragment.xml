@@ -105,12 +105,12 @@
                     android:theme="@style/MaterialTheme"/>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_image_picker"
+                    android:id="@+id/btn_pick_capture_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="10dp"
-                    android:text="@string/image_picker"
+                    android:text="@string/pick_capture_image"
                     android:theme="@style/MaterialTheme"
                     android:layout_below="@+id/btn_state_progress_bar"/>
 

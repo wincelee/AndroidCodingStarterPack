@@ -27,7 +27,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     MaterialButton btnVibration, btnOneShotVibration, btnWaveFormVibration,
             btnSmsSenderRetriever, btnTextInputLayoutAutoCompleteTextViewSpinner,
-            btnChipsFragment, btnGSonFragment, btnStateProgressBar, btnImagePicker;
+            btnChipsFragment, btnGSonFragment, btnStateProgressBar, btnPickCaptureImage;
 
     BottomSheetBehavior<View> bottomSheetBehavior;
 
@@ -59,6 +59,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnChipsFragment = view.findViewById(R.id.btn_chips_fragment);
         btnGSonFragment = view.findViewById(R.id.btn_gSon_fragment);
         btnStateProgressBar = view.findViewById(R.id.btn_state_progress_bar);
+        btnPickCaptureImage = view.findViewById(R.id.btn_pick_capture_image);
 
         View bottomSheetView = view.findViewById(R.id.bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView);
@@ -72,7 +73,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         btnChipsFragment.setOnClickListener(this);
         btnGSonFragment.setOnClickListener(this);
         btnStateProgressBar.setOnClickListener(this);
-        btnImagePicker.setOnClickListener(this);
+        btnPickCaptureImage.setOnClickListener(this);
+
     }
 
     @Override
@@ -175,7 +177,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             navController.navigate(R.id.nav_chips_group, bundle);
         }
 
-        if (viewId == R.id.btn_image_picker){
+        if (viewId == R.id.btn_pick_capture_image){
 
 
             bundle.putSerializable("SERIALIZABLE", "serializable");

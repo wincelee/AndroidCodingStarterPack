@@ -1,16 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">AndroidCodingStarterPack</string>
     <string name="vibration">Vibration</string>
     <string name="one_shot_vibration">One Shot Vibration</string>
     <string name="wave_form_vibration">Wave Form Vibration</string>
+    <string name="one_time_sms">One Time Sms</string>
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="proceed">Proceed</string>
-    <string name="one_time_sms">One Time Sms</string>
     <string name="enter_otp_received">Enter OTP Received</string>
     <string name="message">\nMessage: </string>
     <string name="matched_string">\"\nMatchedString: \"</string>
     <string name="bar_code_scanner">Bar Code Scanner</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_input_layout_auto_complete_text_view_spinner">Text Input Layout Auto Complete Text View Spinner</string>
+    <string name="choose_item_name">Choose Item Name</string>
+    <string name="check_selection">Check Selection</string>
     <string name="chips_group">Chips Group</string>
     <string name="default_chip">Default Chip</string>
     <string name="entry_chip">Entry Chip</string>
@@ -23,6 +27,11 @@
     <string name="color_change_chip">Color Change Chip</string>
     <string name="check_selected_chip">Check Selected Chip</string>
     <string name="gson_json_parsing">GSon Json Parsing</string>
-    <string name="state_progress_bar">State Progress Bar</string>
+    <string name="step_progress_bar">Step Progress Bar</string>
     <string name="image_picker">Image Picker</string>
+    <string name="show_image_capture_chosen">Show Image Capture/Chosen</string>
+    <string name="pick_image">Pick Image</string>
+    <string name="pick_capture_image">Pick Capture Image</string>
+    <string name="capture_from_camera">Capture from Camera</string>
+    <string name="pick_from_gallery">Pick from Gallery</string>
 </resources>
