@@ -8,7 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,15 +52,13 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
 
     MaterialButton btnCheckSelection;
 
+    int itemId;
+    String itemName;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.til_spinner_fragment, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -88,12 +88,31 @@ public class TilSpinnerFragment extends Fragment implements View.OnClickListener
 
         });
 
+        actvItemsWithThreshold.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                itemName = null;
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         actvItemsWithThreshold.setOnItemClickListener((parent, arg1, pos, id) -> {
 
             Item selectedItem = (Item) parent.getItemAtPosition(pos);
 
-            int itemId = selectedItem.getItemId();
-            String itemName = selectedItem.getItemName();
+            itemId = selectedItem.getItemId();
+            itemName = selectedItem.getItemName();
 
             Toast.makeText(requireActivity(), "Item Id: " + itemId + "\nItem Name: " + itemName, Toast.LENGTH_LONG).show();
 
